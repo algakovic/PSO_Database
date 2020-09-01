@@ -1,0 +1,17 @@
+#!/usr/bin/env python
+'''This is a python SQL database''' 
+
+import sqlite3
+
+conn = sqlite3.connect('pso_database')
+c = conn.cursor()
+
+# Create three tables UNITS, MATERIALS, MAG
+c.execute('''CREATE TABLE IF NOT EXISTS UNITS
+            (p_id INTEGER PRIMARY KEY AUTOINCREMENT, units TEXT)''')
+c.execute('''CREATE TABLE IF NOT EXISTS MATERIALS
+            (p_id INTEGER PRIMARY KEY AUTOINCREMENT, idealNumber INTEGER, material TEXT, givenNumber INTEGER)''')
+c.execute('''CREATE TABLE IF NOT EXISTS MAGS
+            (p_id INTEGER PRIMARY KEY AUTOINCREMENT, magName TEXT, attributes TEXT, idealNumber INTEGER, photonBlast TEXT)''')
+
+conn.commit()
