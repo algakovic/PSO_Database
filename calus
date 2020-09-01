@@ -14,4 +14,26 @@ c.execute('''CREATE TABLE IF NOT EXISTS MATERIALS
 c.execute('''CREATE TABLE IF NOT EXISTS MAGS
             (p_id INTEGER PRIMARY KEY AUTOINCREMENT, magName TEXT, attributes TEXT, idealNumber INTEGER, photonBlast TEXT)''')
 
+# Insert multiple rows of Data into each table:
+Units = [(1, 'GOD ABILITY'),
+        ('GOD ABILITY'),
+        ('GOD LEGS'),
+        ('FREE SLOT')]
+
+c.executemany('INSERT INTO UNITS VALUES (?)', Units)
+
+Materials = [(90, 'Power', 0),
+            (28, 'Def', 0),
+            (0, 'Mind', 0),
+            (0, 'Evade', 0),
+            (25, 'Luck', 0)]  
+c.executemany('INSERT INTO MATERIALS VALUES (?,?,?)', Materials)
+
+Mag = [('SATO', 'DEF', 5, 'Estilla'),
+        ('SATO', 'POW', 137, 'Milla and Youlla'),
+        ('SATO', 'DEX', 58, 'Pilla'),
+        ('SATO', 'MST', 0)]
+
+c.executemany('INSERT INTO MAG VALUES (?,?,?,?)', Mag)
+
 conn.commit()
