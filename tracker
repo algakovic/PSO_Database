@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 '''Program to interact with PSO_DATABASE'''
 
-print('Hi')
+import sqlite3
 
+conn = sqlite3.connect('pso_database')
+c = conn.cursor()
+
+for row in c.execute('SELECT * FROM MAGS'):
+    print(row)
