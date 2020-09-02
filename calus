@@ -20,7 +20,7 @@ Units = [(1, 'GOD ABILITY'),
         ('GOD LEGS'),
         ('FREE SLOT')]
 
-c.executemany('INSERT INTO UNITS VALUES (?)', Units)
+c.executemany('INSERT INTO UNITS VALUES (?,?)', Units)
 
 Materials = [(90, 'Power', 0),
             (28, 'Def', 0),
