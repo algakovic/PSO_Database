@@ -29,11 +29,11 @@ Materials = [(1, 90, 'Power', 0),
             (5, 25, 'Luck', 0)]  
 c.executemany('INSERT INTO MATERIALS VALUES (?,?,?,?)', Materials)
 
-Mag = [('SATO', 'DEF', 5, 'Estilla'),
-        ('SATO', 'POW', 137, 'Milla and Youlla'),
-        ('SATO', 'DEX', 58, 'Pilla'),
-        ('SATO', 'MST', 0)]
+Mag = [(1,'SATO', 'DEF', 5, 'Estilla'),
+        (2,'SATO', 'POW', 137, 'Milla and Youlla'),
+        (3,'SATO', 'DEX', 58, 'Pilla'),
+        (4,'SATO', 'MST', 0, 'None')]
 
-c.executemany('INSERT INTO MAG VALUES (?,?,?,?)', Mag)
+c.executemany('INSERT INTO MAGS VALUES (?,?,?,?,?)', Mag)
 
 conn.commit()
