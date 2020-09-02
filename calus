@@ -16,9 +16,9 @@ c.execute('''CREATE TABLE IF NOT EXISTS MAGS
 
 # Insert multiple rows of Data into each table:
 Units = [(1, 'GOD ABILITY'),
-        ('GOD ABILITY'),
-        ('GOD LEGS'),
-        ('FREE SLOT')]
+        (2, 'GOD ABILITY'),
+        (3, 'GOD LEGS'),
+        (4, 'FREE SLOT')]
 
 c.executemany('INSERT INTO UNITS VALUES (?,?)', Units)
 
