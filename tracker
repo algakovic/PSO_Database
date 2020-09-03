@@ -7,6 +7,7 @@ conn = sqlite3.connect('pso_database')
 c = conn.cursor()
 
 def print_rows(table):
+    print(table)
     for row in c.execute(f'SELECT * FROM {table}'):
         print(row)
     print('\n')
