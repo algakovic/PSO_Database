@@ -3,7 +3,7 @@
 
 import sqlite3
 
-conn = sqlite3.connect('pso_database')
+conn = sqlite3.connect('pso_database.db')
 c = conn.cursor()
 
 def print_rows(table):
@@ -12,6 +12,6 @@ def print_rows(table):
         print(row)
     print('\n')
 
-print_rows('MAGS')
-print_rows('MATERIALS')
-print_rows('UNITS')
+print_rows('Mags')
+print_rows('Materials')
+print_rows('Units')
