@@ -6,12 +6,12 @@ import sqlite3
 conn = sqlite3.connect('pso_database.db')
 c = conn.cursor()
 
-def print_rows(table):
+def print_tables(table):
     print(table)
-    for row in c.execute(f'SELECT * FROM {table}'):
-        print(row)
+    for table in c.execute(f'SELECT * FROM {table}'):
+        print(table)
     print('\n')
 
-print_rows('Mags')
-print_rows('Materials')
-print_rows('Units')
+print_tables('Mags')
+print_tables('Materials')
+print_tables('Units')
