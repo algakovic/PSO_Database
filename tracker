@@ -6,12 +6,42 @@ import sqlite3
 conn = sqlite3.connect('pso_database.db')
 c = conn.cursor()
 
+'''Display all tables in relational database'''
 def print_tables(table):
     print(table)
     for table in c.execute(f'SELECT * FROM {table}'):
         print(table)
-    print('\n')
 
+'''Takes a number between 1 and 5 and adds a material'''
+def add_material(number):
+    c.execute("""Update Materials set givenNumber = givenNumber + 1 where p_id = ?""", (number,))
+    conn.commit()
+    
+
+print('/----------------------------------------\\')
 print_tables('Mags')
-print_tables('Materials')
-print_tables('Units')
+print_tables('\nMaterials')
+print_tables('\nUnits')
+print('\----------------------------------------/')
+
+'''Print Menu and provide choice inputs'''
+print('\nMenu:')
+print('1). Add Material')
+print('2). Edit Material \n')
+
+choice = input("How can I help Sir? \n")
+
+if int(choice) == 1:
+
+    print('1). Power')
+    print('2). Def')
+    print('3). Mind')
+    print('4). Evade')
+    print('5). Luck \n')
+    response = int(input('Which Material sir? '))
+    add_material(response)
+
+if int(choice) == 2:
+    pass
+
+conn.close()
