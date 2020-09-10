@@ -2,6 +2,7 @@
 '''Program to interact with PSO_DATABASE'''
 
 import sqlite3
+import sys
 
 conn = sqlite3.connect('pso_database.db')
 c = conn.cursor()
@@ -16,8 +17,8 @@ def print_tables(table):
 def add_material(number):
     c.execute("""Update Materials set givenNumber = givenNumber + 1 where p_id = ?""", (number,))
     conn.commit()
-    
 
+'''Display all tables currently in the database'''    
 print('/----------------------------------------\\')
 print_tables('Mags')
 print_tables('\nMaterials')
@@ -27,21 +28,25 @@ print('\----------------------------------------/')
 '''Print Menu and provide choice inputs'''
 print('\nMenu:')
 print('1). Add Material')
-print('2). Edit Material \n')
+print('2). Edit Material')
+print('e). Exit\n')
 
 choice = input("How can I help Sir? \n")
-
-if int(choice) == 1:
-
+if choice == '1':
     print('1). Power')
     print('2). Def')
     print('3). Mind')
     print('4). Evade')
-    print('5). Luck \n')
-    response = int(input('Which Material sir? '))
-    add_material(response)
-
-if int(choice) == 2:
+    print('5). Luck')
+    print('e). Exit\n')
+    response = input('Which Material sir? ')
+    if response == 'e':
+        sys.exit()
+    else:
+        add_material(int(response))
+elif choice == '2':
     pass
+else:
+    sys.exit()
 
 conn.close()
