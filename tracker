@@ -1,22 +1,37 @@
 #!/usr/bin/env python
 '''Program to interact with PSO_DATABASE'''
 
-import sqlite3
 import sys
+from subprocess import call
+import sqlite3
+
 
 conn = sqlite3.connect('pso_database.db')
 c = conn.cursor()
 
 '''Display all tables in relational database'''
 def print_tables(table):
-    print(table)
-    for table in c.execute(f'SELECT * FROM {table}'):
-        print(table)
+    print(table) # Prints Table Header
+    for row in c.execute(f'select * from {table}'):
+        print(row)
 
 '''Takes a number between 1 and 5 and adds a material'''
 def add_material(number):
     c.execute("""Update Materials set givenNumber = givenNumber + 1 where p_id = ?""", (number,))
     conn.commit()
+
+'''Takes a value and sets material to value'''
+def edit_material(value, p_id):
+    c.execute("""Update Materials set givenNumber = ? where p_id = ?""", (value, p_id))
+    conn.commit()
+
+'''Feedback function to know a material has been modified takes a number'''
+def feedback(number):
+    c.execute("""select material, givenNumber from Materials where p_id = ?""", (number,))
+    data = c.fetchone()
+    print(f'{data[0]} material is now {data[1]}')
+
+call('clear')
 
 '''Display all tables currently in the database'''    
 print('/----------------------------------------\\')
@@ -31,22 +46,34 @@ print('1). Add Material')
 print('2). Edit Material')
 print('e). Exit\n')
 
-choice = input("How can I help Sir? \n")
+choice = input("How can I help you today? \n")
 if choice == '1':
-    print('1). Power')
-    print('2). Def')
-    print('3). Mind')
-    print('4). Evade')
-    print('5). Luck')
+    call('clear')
+    print_tables('\nMaterials')
+    print('\----------------------------------------/\n ')
     print('e). Exit\n')
-    response = input('Which Material sir? ')
+    response = input('Enter a choice. 1 for Power, 2 for Def etc:  ')
     if response == 'e':
+        call('clear')
         sys.exit()
     else:
         add_material(int(response))
+        call('clear')
+        feedback(int(response))
+
 elif choice == '2':
-    pass
+    call('clear')
+    print_tables('\nMaterials')
+    print('\----------------------------------------/\n ')
+    p_id = input('Which Material? 1 for Pow, 2 for Def etc: ')
+    value = input('Please provide a new value for this Material: ')
+    edit_material(int(value), int(p_id))
+    call('clear')
+    feedback(int(p_id))
+    
+
 else:
+    call('clear')
     sys.exit()
 
 conn.close()
