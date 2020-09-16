@@ -7,6 +7,8 @@ Data will be easily retrievable.
 Running the tracker script with ```./tracker``` will output a menu and ask you what you want to do. 
 from here you can add + 1 to a material on the menu or edit the value of any material in the table.
 
+![image](https://user-images.githubusercontent.com/40424244/93288217-479f3e00-f7d3-11ea-912e-b5aa721bf7d7.png)
+
 ## Features:
 - connects to a custom database 
 - modifies and retrieves the database
