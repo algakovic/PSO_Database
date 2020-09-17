@@ -1,7 +1,7 @@
 # PSO_Database
-This is a Python program designed to use SQL to store and handle incoming game data. 
-Data such as character stats will be added to the database using the tracker Python script program.
-Data will be easily retrievable. 
+This is a Python program designed to use SQL to store and handle incoming user provided data. 
+Data such as character stats can be added to the database using the Python tracker program.
+Data from the database is easily retrievable and modifiable. 
 
 ## Usage
 Running the tracker script with ```./tracker``` will output a menu and ask you what you want to do. 
